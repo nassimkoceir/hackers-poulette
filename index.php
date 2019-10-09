@@ -1,3 +1,4 @@
+<?php include('app.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +39,43 @@
 
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="lastname" placeholder="Lastname">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-md-6">
+						<input type="text" class="form-control" name="mail" placeholder="E-mail address">
+					</div>
+
+					<div class="col-md-6">
+						<select class="form-control">
+							<option selected disabled>Country</option>
+							<?php countrylist(); ?>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-12">
+						<label>Subject</label>
+						<select class="form-control">
+							<option value="hardware">Hardware</option>
+							<option value="software">Software</option>
+							<option value="shipping">Shipping</option>
+							<option value="other" selected>Other</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-12">
+						<textarea name="message" placeholder="Your message" class="form-control" rows="10"></textarea>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-12">
+						<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</form>
