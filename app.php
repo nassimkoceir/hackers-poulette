@@ -248,18 +248,12 @@
 	}
 
 	function displayError($status){
-		if(isset($status)){
+		if(!empty($status)){
 			if($status){
 				echo " is-invalid";
 			} else {
 				echo " is-valid";
 			}
-		}
-	}
-
-	function displayValue($value){
-		if(isset($value)){
-			echo 'value="'.$value.'"';
 		}
 	}
 

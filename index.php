@@ -27,7 +27,7 @@
 			<form action="" method="post" class="col-12">
 				<div class="form-group row">
 					<div class="col-md-4">
-						<select class="form-control<?php displayError($errorGender); ?>" name="gender">
+						<select class="form-control<?php displayError($errorGender ?? ""); ?>" name="gender">
 							<option selected disabled>Gender</option>
 							<option value="m">Male</option>
 							<option value="f">Female</option>
@@ -36,21 +36,21 @@
 					</div>
 
 					<div class="col-md-4">
-						<input type="text" class="form-control<?php displayError($errorName); ?>" name="name" placeholder="Name" <?php displayValue($name); ?>>
+						<input type="text" class="form-control<?= displayError($errorName ?? ""); ?>" name="name" placeholder="Name" value="<?= $name ?? ""; ?>">
 					</div>
 
 					<div class="col-md-4">
-						<input type="text" class="form-control<?php displayError($errorLastname); ?>" name="lastname" placeholder="Lastname" <?php displayValue($lastname); ?>>
+						<input type="text" class="form-control<?= displayError($errorLastname ?? ""); ?>" name="lastname" placeholder="Lastname" value="<?= $lastname ?? ""; ?>">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-md-6">
-						<input type="text" class="form-control<?php displayError($errorMail); ?>" name="mail" placeholder="E-mail address" <?php displayValue($mail); ?>>
+						<input type="text" class="form-control<?php displayError($errorMail ?? ""); ?>" name="mail" placeholder="E-mail address" value="<?= $mail ?? ""; ?>">
 					</div>
 
 					<div class="col-md-6">
-						<select class="form-control<?php displayError($errorCountry); ?>" name="country">
+						<select class="form-control<?php displayError($errorCountry ?? ""); ?>" name="country">
 							<option selected disabled>Country</option>
 							<?php countrylist(); ?>
 						</select>
@@ -59,7 +59,7 @@
 
 				<div class="form-group row">
 					<div class="col-12">
-						<select class="form-control<?php displayError($errorSubject); ?>" name="subject">
+						<select class="form-control<?php displayError($errorSubject ?? ""); ?>" name="subject">
 							<option disabled>Subject</option>
 							<option value="hardware">Hardware</option>
 							<option value="shipping">Shipping</option>
@@ -70,7 +70,7 @@
 
 				<div class="form-group row">
 					<div class="col-12">
-						<textarea name="message" placeholder="Your message" class="form-control<?php displayError($errorMessage); ?>" rows="10"><?= $message; ?></textarea>
+						<textarea name="message" placeholder="Your message" class="form-control<?php displayError($errorMessage ?? ""); ?>" rows="10"><?= $message ?? ""; ?></textarea>
 					</div>
 				</div>
 

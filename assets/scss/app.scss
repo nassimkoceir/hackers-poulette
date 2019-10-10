@@ -60,6 +60,8 @@ input.form-control, textarea.form-control {
 select.form-control {
 	height: 3.2rem;
 	-moz-appearance: textarea;
+  background: url('../img/arrow.png') no-repeat right;
+  background-size: contain;
 }
 
 .btn-submit {
