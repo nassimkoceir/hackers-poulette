@@ -69,3 +69,10 @@ select.form-control {
 	font-weight: bold;
 	color: #fff;
 }
+
+.notification {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}

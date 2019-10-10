@@ -343,7 +343,7 @@ if(isset($_POST['submit'])){
 	}
 
 	if(!$errorGender && !$errorName && !$errorLastname && !$errorMail && !$errorMail && !$errorSubject && !$errorMessage){
-		feedback("All your information as been validated", "success");
+		feedback("All your informations has been validated", "success");
 	}
 }
 
@@ -359,5 +359,9 @@ if(isset($_POST['submit'])){
 
 	function feedbackForm($arg, $type = "invalid"){
 		echo '<div class="'.$type.'-feedback text-center">'.$arg.'</div>';
+	}
+
+	function feedback($arg, $type = "danger"){
+		echo '<div class="alert alert-'.$type.' text-center notification">'.$arg.'</div>';
 	}
 ?>
