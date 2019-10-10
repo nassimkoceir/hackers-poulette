@@ -14,7 +14,7 @@
 
 body {
 	font-family: Bellota;
-	background-color: #FCFCFC;
+	background-color: #F7F7F7;
 	color: #303030;
 }
 
@@ -39,7 +39,7 @@ label {
 }
 
 input.form-control, select.form-control, textarea.form-control {
-	border: 2px solid transparent;
+	border: 2px solid white;
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
 }
 
@@ -60,7 +60,7 @@ input.form-control, textarea.form-control {
 select.form-control {
 	height: 3.2rem;
 	-moz-appearance: textarea;
-  background: url('../img/arrow.png') no-repeat right;
+  background: url('../img/arrow.png') no-repeat right #fff;
   background-size: contain;
 }
 
