@@ -246,4 +246,90 @@
 			echo '<option value="'.$iso.'">'.$country.'</option>"';
 		}
 	}
+
+	function displayError($status){
+		if(isset($status)){
+			if($status){
+				echo " is-invalid";
+			} else {
+				echo " is-valid";
+			}
+		}
+	}
+
+	function displayValue($value){
+		if(isset($value)){
+			echo 'value="'.$value.'"';
+		}
+	}
+
+	function feedback($arg, $type = "danger"){
+		echo '<div class="col-12"><div class="alert alert-'.$type.'">'.$arg.'</div></div>';
+	}
+
+	if(isset($_POST['submit'])){
+		// SANITIZING
+		$gender = filter_var($_POST['gender'], FILTER_SANITIZE_STRING);
+		$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+		$mail = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
+		$country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
+		$subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
+		$message = filter_var($_POST['message'], FILTER_SANITIZE_SPECIAL_CHARS);
+		$error = [];
+
+		// VALIDATING
+		if(!empty($gender)){
+			$errorGender = false;
+		} else {
+			$errorGender = true;
+			$error[] = "Your gender is not valid";
+		}
+
+		if(!empty($name)){
+			$errorName = false;
+		} else {
+			$errorName = true;
+			$error[] = "Your name is not valid";
+		}
+
+		if(!empty($lastname)){
+			$errorLastname = false;
+		} else {
+			$errorLastname = true;
+			$error[] = "Your lastname is not valid";
+		}
+
+		if(!empty($mail) && filter_var($mail,FILTER_SANITIZE_EMAIL)){
+			$errorMail = false;
+		} else {
+			$errorMail = true;
+			$error[] = "Your email is not valid";
+		}
+
+		if(!empty($subject)){
+			$errorSubject = false;
+		} else {
+			$errorSubject = true;
+			$error[] = "Your subject is not valid";
+		}
+
+		if(!empty($country)){
+			$errorCountry = false;
+		} else {
+			$errorCountry = true;
+			$error[] = "Your country is not valid";
+		}
+
+		if(!empty($message)){
+			$errorMessage = false;
+		} else {
+			$errorMessage = true;
+			$error[] = "Your message is not valid";
+		}
+
+		if(!$errorGender && !$errorName && !$errorLastname && !$errorMail && !$errorMail && !$errorSubject && !$errorMessage){
+			feedback("All your information as been validated", "success");
+		}
+	}
 ?>
