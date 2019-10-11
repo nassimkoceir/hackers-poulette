@@ -26,7 +26,7 @@
 			<form action="" method="post" class="col-12">
 				<div class="form-group row">
 					<div class="col-md-4">
-						<select class="form-control<?php displayError($errorGender ?? null); ?>" name="gender" required>
+						<select class="form-control<?php displayError($errorGender ?? null); ?>" name="gender">
 							<option selected disabled>Gender</option>
 							<option value="m" <?php if(isset($gender)){echo ($gender == 'm')? 'selected' : null;} ?>>Male</option>
 							<option value="f" <?php if(isset($gender)){echo ($gender == 'f')? 'selected' : null;} ?>>Female</option>
@@ -36,24 +36,25 @@
 					</div>
 
 					<div class="col-md-4">
-						<input type="text" class="form-control<?= displayError($errorName ?? null); ?>" name="name" placeholder="Name" value="<?= $name ?? ""; ?>" required>
+						<input type="text" class="form-control<?= displayError($errorName ?? null); ?>" name="name" placeholder="Name" value="<?= $name ?? ""; ?>">
 						<?php if(isset($error['name'])){feedbackForm($error['name'], "invalid");} ?>
 					</div>
 
 					<div class="col-md-4">
-						<input type="text" class="form-control<?= displayError($errorLastname ?? null); ?>" name="lastname" placeholder="Lastname" value="<?= $lastname ?? ""; ?>" required>
+						<input type="text" class="form-control<?= displayError($errorLastname ?? null); ?>" name="lastname" placeholder="Lastname" value="<?= $lastname ?? ""; ?>">
 						<?php if(isset($error['lastname'])){feedbackForm($error['lastname'], "invalid");} ?>
+						<input type="text" class="h0neyp0t" name="honey" placeholder="honey">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-md-6">
-						<input type="email" class="form-control<?php displayError($errorMail ?? null); ?>" name="mail" placeholder="E-mail address" value="<?= $mail ?? ""; ?>" required>
+						<input type="text" class="form-control<?php displayError($errorMail ?? null); ?>" name="mail" placeholder="E-mail address" value="<?= $mail ?? ""; ?>">
 						<?php if(isset($error['mail'])){feedbackForm($error['mail'], "invalid");} ?>
 					</div>
 
 					<div class="col-md-6">
-						<select class="form-control<?php displayError($errorCountry ?? null); ?>" name="country" required>
+						<select class="form-control<?php displayError($errorCountry ?? null); ?>" name="country">
 							<?php countrylist($country ?? null); ?>
 						</select>
 						<?php if(isset($error['country'])){feedbackForm($error['country'], "invalid");} ?>
@@ -62,7 +63,7 @@
 
 				<div class="form-group row">
 					<div class="col-12">
-						<select class="form-control<?php displayError($errorSubject ?? null); ?>" name="subject" required>
+						<select class="form-control<?php displayError($errorSubject ?? null); ?>" name="subject">
 							<option disabled>Subject</option>
 							<option value="hardware" <?php if(isset($subject)){echo ($subject == 'hardware')? 'selected' : null;} ?>>Hardware</option>
 							<option value="shipping" <?php if(isset($subject)){echo ($subject == 'shipping')? 'selected' : null;} ?>>Shipping</option>
@@ -74,7 +75,7 @@
 
 				<div class="form-group row">
 					<div class="col-12">
-						<textarea name="message" placeholder="Your message" class="form-control<?php displayError($errorMessage ?? null); ?>" rows="10" required><?= $message ?? ""; ?></textarea>
+						<textarea name="message" placeholder="Your message" class="form-control<?php displayError($errorMessage ?? null); ?>" rows="10"><?= $message ?? ""; ?></textarea>
 						<?php if(isset($error['message'])){feedbackForm($error['message'], "invalid");} ?>
 					</div>
 				</div>

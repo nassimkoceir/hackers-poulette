@@ -261,7 +261,7 @@ function countrylist($country){
   }
 }
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) && is_null($_POST['honey'])){
 	// SANITIZING
 	if(!empty($_POST['gender'])){
 		$gender = filter_var($_POST['gender'], FILTER_SANITIZE_STRING);
@@ -343,8 +343,14 @@ if(isset($_POST['submit'])){
 	}
 
 	if(!$errorGender && !$errorName && !$errorLastname && !$errorMail && !$errorMail && !$errorSubject && !$errorMessage){
-		feedback("All your informations has been validated", "success");
+		feedback("All your informations has been validated and sent", "success");
+		$to = 'nassim.koceir@gmail.com'
+		$subject = '[Hackers Poulette] Contact Form - '.$subject;
+		$headers = 'From:'.$mail;
+		mail($to,$subject,$message,$headers);
 	}
+} else if (isset($_POST['honey']) && !is_null($_POST['honey'])) {
+	feedback("We did not accept robots", "danger");
 }
 
 	function displayError($status){
