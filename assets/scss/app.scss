@@ -75,8 +75,9 @@ select.form-control {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 9;
 }
 
-input.h0neyp0t {
+input.h0neyp0t, label {
 	display: none;
 }

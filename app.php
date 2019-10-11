@@ -243,20 +243,25 @@ function countrylist($country){
   );
 
   if(isset($country) && !empty($country)){
-    echo '<option disabled>Country</option>';
+    echo '<option disabled>Country</option>
+	';
   } else {
-    echo '<option disabled selected>Country</option>';
+    echo '<option disabled selected>Country</option>
+	';
   }
 
   foreach ($countries as $iso => $countryName) {
     if(isset($country)){
       if($country == $iso){
-        echo '<option value="'.$iso.'" selected>'.$countryName.'</option>"';
+        echo '<option value="'.$iso.'" selected>'.$countryName.'</option>
+		';
       } else {
-        echo '<option value="'.$iso.'">'.$countryName.'</option>"';
+        echo '<option value="'.$iso.'">'.$countryName.'</option>
+		';
       }
     } else {
-      echo '<option value="'.$iso.'">'.$countryName.'</option>"';
+      echo '<option value="'.$iso.'">'.$countryName.'</option>
+	  ';
     }
   }
 }
@@ -284,7 +289,19 @@ if(isset($_POST['submit']) && empty($_POST['honey'])){
 
 	// VALIDATING
 	if(!empty($gender)){
-		$errorGender = false;
+		if($gender == "m"){
+			$genderMail = "Male";
+			$errorGender = false;
+		} else if($gender == "f"){
+			$genderMail = "Female";
+			$errorGender = false;
+		} else if($gender == "o"){
+			$genderMail = "Other";
+			$errorGender = false;
+		} else {
+			$errorGender = true;
+			$error['gender'] = "Choose the right gender";
+		}
 	} else {
 		$errorGender = true;
 		$error['gender'] = "Choose your gender";
@@ -322,10 +339,22 @@ if(isset($_POST['submit']) && empty($_POST['honey'])){
 	}
 
 	if(!empty($subject)){
-		$errorSubject = false;
+		if($subject == "hardware"){
+			$subjectMail = "Hardware";
+			$errorSubject = false;
+		} else if($subject == "shipping"){
+			$subjectMail = "Shipping";
+			$errorSubject = false;
+		} else if($subject == "other"){
+			$subjectMail = "Other";
+			$errorSubject = false;
+		} else {
+			$errorSubject = true;
+			$error['subject'] = "Pick the right subject";
+		}
 	} else {
 		$errorSubject = true;
-		$error['subject'] = "Your subject cannot be empty";
+		$error['subject'] = "Choose a subject";
 	}
 
 	if(!empty($country)){
@@ -344,10 +373,21 @@ if(isset($_POST['submit']) && empty($_POST['honey'])){
 
 	if(!$errorGender && !$errorName && !$errorLastname && !$errorMail && !$errorMail && !$errorSubject && !$errorMessage){
 		feedback("All your informations has been validated and sent", "success");
-		$to = 'nassim.koceir@gmail.com';
-		$mailSubject = '[Hackers Poulette] Contact Form - '.$subject;
-		$headers = 'From:'.$mail;
-		mail($to,$mailSubject,$message,$headers);
+		// CHANGE THE $to BY A VALID MAIL ADDRESS
+		$to = dummy;
+		$mailSubject = '[Hackers Poulette] '.$name.' '.$lastname.' contacts you - '.$subject;
+
+		$headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	    $headers .= 'To:' . "\r\n";
+	    $headers .= 'From: '.$name.' '.$lastname.' <'.$mail.'>' . "\r\n";
+
+		$messageMail = '<h1>(Hackers Poulette) '.$name.' '.$lastname.' sent you an email</h1>
+		<p><strong>Subject</strong> : '.$subjectMail.'</p>
+		<p><strong>Gender</strong> : '.$genderMail.'</p>
+		<p><strong>From</strong> : '.$country.'</p>
+		<p><strong>Message</strong> :<br />'.$message.'</p>';
+		mail($to,$mailSubject,$messageMail,$headers);
 	}
 } else if (isset($_POST['honey']) && !is_null($_POST['honey'])) {
 	feedback("We did not accept robots", "danger");
