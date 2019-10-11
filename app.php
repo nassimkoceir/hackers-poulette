@@ -261,7 +261,7 @@ function countrylist($country){
   }
 }
 
-if(isset($_POST['submit']) && is_null($_POST['honey'])){
+if(isset($_POST['submit']) && empty($_POST['honey'])){
 	// SANITIZING
 	if(!empty($_POST['gender'])){
 		$gender = filter_var($_POST['gender'], FILTER_SANITIZE_STRING);
@@ -344,10 +344,10 @@ if(isset($_POST['submit']) && is_null($_POST['honey'])){
 
 	if(!$errorGender && !$errorName && !$errorLastname && !$errorMail && !$errorMail && !$errorSubject && !$errorMessage){
 		feedback("All your informations has been validated and sent", "success");
-		$to = 'nassim.koceir@gmail.com'
-		$subject = '[Hackers Poulette] Contact Form - '.$subject;
+		$to = 'nassim.koceir@gmail.com';
+		$mailSubject = '[Hackers Poulette] Contact Form - '.$subject;
 		$headers = 'From:'.$mail;
-		mail($to,$subject,$message,$headers);
+		mail($to,$mailSubject,$message,$headers);
 	}
 } else if (isset($_POST['honey']) && !is_null($_POST['honey'])) {
 	feedback("We did not accept robots", "danger");
