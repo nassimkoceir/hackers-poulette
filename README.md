@@ -14,5 +14,5 @@ We had 3 days to work on this, from 9 to 11 october.
 We were at Becode Brussels.
 
 ## Materials
-![Wireframe][wireframe.jpg]
-![mockup][mockup.png]
+![Wireframe](wireframe.jpg)
+![mockup](mockup.png)
